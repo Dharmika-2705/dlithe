@@ -1,0 +1,28 @@
+def max_stolen_value(arr):
+    include = 0
+    exclude = 0
+    for value in arr:
+        new_include = exclude + value
+        exclude = max(include, exclude)
+        include = new_include
+    return max(include, exclude)
+val = [6, 7, 1, 3, 8, 2, 5]
+print(max_stolen_value(val))
+
+
+def generate_pattern():
+    for i in range(1, 6):
+        if i % 2 == 0:
+            print(f"{i+1}" + f"{i}"*3 + "2")
+        else:
+            print(f"{i}"*4 + f"{i+1}")
+generate_pattern()
+
+
+def is_disarium(number):
+    num_str = str(number)
+    length = len(num_str)
+    sum_of_digits = sum(int(num_str[i])**(i + 1) for i in range(length))
+    return sum_of_digits == number
+number=135
+print(True if is_disarium(number) else False)
